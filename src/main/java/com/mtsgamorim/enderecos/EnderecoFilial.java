@@ -6,15 +6,15 @@ package com.mtsgamorim.enderecos;
 
 /**
  *
- * @author Usuario
+ * Matheus Amorim Garcia Santos - 201765142AC
  */
-public class EnderecoFilial extends Endereco {
+public class EnderecoFilial extends Endereco{
     
     private final String tipo;
 
     public EnderecoFilial(String cep, String cidade, String estado) {
         super(cep, cidade, estado);
-        this.tipo = "Residencial";
+        this.tipo = "Filial";
     }
 
     public String getTipo() {

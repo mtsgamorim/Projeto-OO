@@ -5,6 +5,9 @@
 package com.mtsgamorim.lojaamorimrh;
 
 import com.mtsgamorim.enderecos.EnderecoResidencial;
+import com.mtsgamorim.validadores.ValidadorPessoa;
+
+// Matheus Amorim Garcia Santos - 201765142AC
 
 abstract class Pessoa {
 
@@ -12,12 +15,27 @@ abstract class Pessoa {
     private int idade;
     private String cpf;
     private EnderecoResidencial endereco;
+    private String telefone;
 
-    public Pessoa(String nome, int idade, String cpf, EnderecoResidencial endereco) {
+    public Pessoa(String nome, int idade, String cpf, EnderecoResidencial endereco, String telefone) {
+        
+        if (!ValidadorPessoa.validarIdade(idade)) {
+            throw new IllegalArgumentException("Idade deve ser maior que 18 e menor que 150.");
+        }
+
+        if (!ValidadorPessoa.validarCPF(cpf)) {
+            throw new IllegalArgumentException("CPF inválido.");
+        }
+
+        if (!ValidadorPessoa.validarTelefone(telefone)) {
+            throw new IllegalArgumentException("Telefone inválido.");
+        }
+        
         this.nome = nome;
         this.idade = idade;
         this.cpf = cpf;
         this.endereco = endereco;
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -52,15 +70,13 @@ abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    // Método toString para exibir informações da pessoa
     @Override
     public String toString() {
-        return "Pessoa{" +
+        return "Pessoa:" +
                 "nome='" + nome + '\'' +
                 ", idade=" + idade +
                 ", cpf='" + cpf + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
+                ", endereco='" + endereco;
     }
     
     public void exibirInformacoes() {

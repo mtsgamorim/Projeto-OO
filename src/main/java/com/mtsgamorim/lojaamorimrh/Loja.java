@@ -8,20 +8,17 @@ import com.mtsgamorim.enderecos.EnderecoFilial;
 
 /**
  *
- * @author Usuario
+ *  Matheus Amorim Garcia Santos - 201765142AC
  */
-class Loja {
-    // Atributos
+public class Loja {
     private String nome;
     private EnderecoFilial endereco;
 
-    // Construtor
     public Loja(String nome, EnderecoFilial endereco) {
         this.nome = nome;
         this.endereco = endereco;
     }
 
-    // Métodos de acesso (getters e setters)
     public String getNome() {
         return nome;
     }
@@ -38,12 +35,8 @@ class Loja {
         this.endereco = endereco;
     }
 
-    // Método toString para exibir informações da loja
     @Override
     public String toString() {
-        return "Loja{" +
-                "nome='" + nome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
+        return "Nome: " + nome + " | Endereço: " + endereco.toString();
     }
 }

@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package interfacesGraficas;
+package com.mtsgamorim.interfacesGraficas;
 
+import com.mtsgamorim.lojaamorimrh.Candidatura;
+import com.mtsgamorim.lojaamorimrh.Colaborador;
+import com.mtsgamorim.lojaamorimrh.Loja;
+import com.mtsgamorim.lojaamorimrh.ProcessoSeletivo;
 import com.mtsgamorim.lojaamorimrh.Usuario;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -16,20 +20,29 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 /**
  *
- * @author Usuario
+ * Matheus Amorim Garcia Santos - 201765142AC
  */
 public class InterfaceLoginCadastro extends JFrame {
     private List<Usuario> usuarios;
+    private List<Loja> lojas;
+    private List<Candidatura> candidaturas;
+    private List<Colaborador> colaboradores;
+    private List<ProcessoSeletivo> processosSeletivos;
 
     private JTextField txtLogin;
     private JPasswordField txtSenha;
 
-    public InterfaceLoginCadastro() {
+    public InterfaceLoginCadastro(List<Loja> lojas, List<Candidatura> candidaturas, List<Colaborador> colaboradores, List<ProcessoSeletivo> processosSeletivos) {
         usuarios = new ArrayList<>();
-
+        this.lojas = lojas;
+        this.candidaturas = candidaturas;
+        this.colaboradores = colaboradores;
+        this.processosSeletivos = processosSeletivos;
+ 
         setTitle("Login e Cadastro");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,27 +87,43 @@ public class InterfaceLoginCadastro extends JFrame {
             if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
                 if (usuario.isAdmin()) {
                     JOptionPane.showMessageDialog(this, "Login bem-sucedido! Usuário é um administrador.");
+
+                    // Abrir a nova janela do menu administrativo
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            MenuAdmin menuAdmin = new MenuAdmin(lojas, candidaturas, colaboradores, processosSeletivos);
+                            menuAdmin.setVisible(true);
+                        }
+                    });
                 } else {
                     JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
+
+                    // Abrir a nova janela do menu do usuário comum
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            MenuUsuarioComum menuUsuarioComum = new MenuUsuarioComum(processosSeletivos, candidaturas);
+                            menuUsuarioComum.setVisible(true);
+                        }
+                    });
                 }
                 return;
             }
         }
 
         JOptionPane.showMessageDialog(this, "Usuário ou senha incorretos.", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
+}
 
     private void realizarCadastro() {
         String login = txtLogin.getText();
         String senha = new String(txtSenha.getPassword());
 
-        // Verifica se os campos de login e senha estão preenchidos
         if (login.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Verifica se o login já existe
         for (Usuario usuario : usuarios) {
             if (usuario.getLogin().equals(login)) {
                 JOptionPane.showMessageDialog(this, "Este login já está em uso.", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -102,7 +131,6 @@ public class InterfaceLoginCadastro extends JFrame {
             }
         }
 
-        // Cria um novo usuário e adiciona à lista
         Usuario novoUsuario = new Usuario(login, senha);
         usuarios.add(novoUsuario);
 

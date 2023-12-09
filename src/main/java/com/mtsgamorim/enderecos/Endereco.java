@@ -4,12 +4,20 @@
  */
 package com.mtsgamorim.enderecos;
 
-abstract class Endereco {
+import com.mtsgamorim.validadores.ValidadorEndereco;
+
+// Matheus Amorim Garcia Santos - 201765142AC
+
+abstract class Endereco{
     private String cep;
     private String cidade;
     private String estado;
 
     public Endereco(String cep, String cidade, String estado) {
+        if (!ValidadorEndereco.validarCEP(cep)) {
+            throw new IllegalArgumentException("CEP inválido.");
+        }
+        
         this.cep = cep;
         this.cidade = cidade;
         this.estado = estado;
@@ -41,10 +49,6 @@ abstract class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" +
-                "cep='" + cep + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
-                '}';
+        return "CEP: " + getCep() + " | Cidade: " + getCidade() + " | Estado: " + getEstado();
     }
 }

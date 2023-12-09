@@ -4,7 +4,9 @@
  */
 package com.mtsgamorim.enderecos;
 
-public class EnderecoResidencial extends Endereco {
+// Matheus Amorim Garcia Santos - 201765142AC
+
+public class EnderecoResidencial extends Endereco{
     private final String tipo;
 
     public EnderecoResidencial(String cep, String cidade, String estado) {

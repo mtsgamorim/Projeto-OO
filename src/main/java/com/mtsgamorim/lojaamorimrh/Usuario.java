@@ -6,7 +6,7 @@ package com.mtsgamorim.lojaamorimrh;
 
 /**
  *
- * @author Usuario
+ * Matheus Amorim Garcia Santos - 201765142AC
  */
 public class Usuario {
     private String login;

@@ -6,21 +6,20 @@ package com.mtsgamorim.lojaamorimrh;
 import com.mtsgamorim.enderecos.EnderecoResidencial;
 import java.util.Date;
 
+// Matheus Amorim Garcia Santos - 201765142AC
+
 public class Candidatura extends Pessoa {
-     // Atributos adicionais
     private String cargo;
     private Date dataCriacao;
     private String etapaProcesso;
 
-    // Construtor específico para Candidatura
-    public Candidatura(String nome, int idade, String cpf, EnderecoResidencial endereco, String cargo, Date dataCriacao, String etapaProcesso) {
-        super(nome, idade, cpf, endereco);
+    public Candidatura(String nome, int idade, String cpf, EnderecoResidencial endereco, String telefone, String cargo, Date dataCriacao) {
+        super(nome, idade, cpf, endereco, telefone);
         this.cargo = cargo;
         this.dataCriacao = dataCriacao;
-        this.etapaProcesso = etapaProcesso;
+        this.etapaProcesso = "Entrevista Inicial";
     }
 
-    // Métodos de acesso (getters e setters) para os novos atributos
     public String getCargo() {
         return cargo;
     }
@@ -45,17 +44,15 @@ public class Candidatura extends Pessoa {
         this.etapaProcesso = etapaProcesso;
     }
 
-    // Método toString para exibir informações da candidatura
     @Override
     public String toString() {
-        return "Candidatura{" +
+        return "Candidatura:" +
                 "nome='" + getNome() + '\'' +
                 ", idade=" + getIdade() +
                 ", cpf='" + getCpf() + '\'' +
                 ", endereco='" + getEndereco() + '\'' +
                 ", cargo='" + cargo + '\'' +
                 ", dataCriacao=" + dataCriacao +
-                ", etapaProcesso='" + etapaProcesso + '\'' +
-                '}';
+                ", etapaProcesso='" + etapaProcesso;
     }
 }

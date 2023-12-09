@@ -4,37 +4,20 @@
  */
 package com.mtsgamorim.lojaamorimrh;
 import com.mtsgamorim.enderecos.EnderecoResidencial;
-import java.util.Date;
+
+// Matheus Amorim Garcia Santos - 201765142AC
 
 public class Colaborador extends Pessoa {
-    // Atributos adicionais
-    private final Date dataIngresso;
-    private Date dataSaida;
     private String cargo;
     private double salario;
     private Loja loja;
 
-    // Construtor com data de saída opcional
-    public Colaborador(String nome, int idade, String cpf, EnderecoResidencial endereco,
-                       Date dataIngresso, String cargo, double salario, Loja loja) {
-        super(nome, idade, cpf, endereco);
-        this.dataIngresso = dataIngresso;
+    public Colaborador(String nome, int idade, String cpf, String telefone, EnderecoResidencial endereco,
+                       String cargo, double salario, Loja loja) {
+        super(nome, idade, cpf, endereco, telefone);
         this.cargo = cargo;
         this.salario = salario;
         this.loja = loja;
-    }
-
-    // Métodos de acesso (getters e setters) para os novos atributos
-    public Date getDataIngresso() {
-        return dataIngresso;
-    }
-
-    public Date getDataSaida() {
-        return dataSaida;
-    }
-
-    public void setDataSaida(Date dataSaida) {
-        this.dataSaida = dataSaida;
     }
 
     public String getCargo() {
@@ -61,19 +44,15 @@ public class Colaborador extends Pessoa {
         this.loja = loja;
     }
 
-    // Método toString para exibir informações do colaborador
     @Override
     public String toString() {
-        return "Colaborador{" +
+        return "Colaborador" +
                 "nome='" + getNome() + '\'' +
                 ", idade=" + getIdade() +
                 ", cpf='" + getCpf() + '\'' +
                 ", endereco='" + getEndereco() + '\'' +
-                ", dataIngresso=" + dataIngresso +
-                ", dataSaida=" + dataSaida +
                 ", cargo='" + cargo + '\'' +
                 ", salario=" + salario +
-                ", loja=" + loja +
-                '}';
+                ", loja=" + loja;
     }
 }

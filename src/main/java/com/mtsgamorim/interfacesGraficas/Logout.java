@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mtsgamorim.Etapas;
+package com.mtsgamorim.interfacesGraficas;
 
 /**
  *
- * @author Usuario
+ * // Matheus Amorim Garcia Santos - 201765142AC
  */
-interface Avaliavel {
-    void realizarAvaliacao();
+interface Logout {
+    void fazerLogout();
 }
