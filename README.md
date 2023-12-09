@@ -14,7 +14,7 @@ aprova-las. O login de candidato permite ele visualizar os processos seletivos q
 
 ## Tecnologias e conceitos aplicados:
  Para interface gráfica, foi utilizado o SWING e o JOption.  
- Todo o projeto é escrito em JAVA e é orientado a objeto].  
+ Todo o projeto é escrito em JAVA e é orientado a objeto.  
  Não existe persistencia de dados, ao fechar a aplicação, todos os dados são perdidos, exceto o login de ADMIN.  
  A classe pessoa é ABSTRATA, e a classe colaborador e candidatura a implementam.  
  A classe endereço é ABSTRATA, e a classe EnderecoFilial e EnderecoResidencial a implementam.  
